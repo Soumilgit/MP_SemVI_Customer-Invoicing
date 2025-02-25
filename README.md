@@ -15,6 +15,6 @@
 
 ## To-Be-Developed Features
 <p>
-<br>- **Chatbot Integration**: Enhance customer interaction with an integrated chatbot that can assist clients with their queries and provide instant support.</br>
-<br>- **WhatsApp Integration**: Seamlessly send invoices, receipts, and other documents directly to your clients via WhatsApp, ensuring quick and efficient communication.</br>
+<br>- <b>Chatbot Integration</b>: Enhance customer interaction with an integrated chatbot that can assist clients with their queries and provide instant support.</br>
+<br>- <b>WhatsApp Integration</b>: Seamlessly send invoices, receipts, and other documents directly to your clients via WhatsApp, ensuring quick and efficient communication.</br>
 </p>
