@@ -10,7 +10,7 @@
 <p>
     <br>A full stack invoicing application made using the MERN stack (MongoDB, Express, React & Node.js), along with Python. This application is specially designed for freelancers and small businesses but can be used for almost any type of business need. With this application, you can send beautiful invoices, receipts, estimates, quotes, bills, etc., to your clients.</br>
 
-<br>Jump right off the Live App and start sending invoices or download the entire source code and run it on your server.</br>
+<br>For now, you can download the entire source code and run it on your server.</br>
 </p>
 
 ## To-Be-Developed Features
