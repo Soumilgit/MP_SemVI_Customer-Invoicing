@@ -1,0 +1,26 @@
+# Node dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Lock files
+package-lock.json
+yarn-error.log
+
+# System files
+.DS_Store
+
+# Logs
+*.log
+
+# Real environment files (exclude)
+*.env
+*.env.local
+*.local
+
+# But allow example env files (include)
+!*.env.example
+
+# Test files
+*.test.js
