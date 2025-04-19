@@ -7,7 +7,7 @@ const InvoiceForm = ({
 
   return (
     <form onSubmit={handleInvoiceSubmit}>
-      <h2 className="text-xl text-coral-red font-semibold">Invoice details</h2>
+      <h2 className="text-xl text-indigo-400 font-semibold">Invoice details</h2>
 
       <fieldset className='mt-3'>
         <label htmlFor="partnerid">Partner ID</label>
@@ -19,13 +19,13 @@ const InvoiceForm = ({
             name="partnerid"
             onChange={(e) => setInvoicePartnerid(e.target.value)}
             value={invoicePartnerid}>
-            <option key="0" value="">Select partner</option>a
+            <option key="0" value="">Select partner</option>
             {partners.map((partner) => (
               <option key={partner._id} value={partner._id}>{partner.name}</option>
             ))}
           </select>
           :
-          <p className="text-red-500">You have not entered any partners yet. <br />
+          <p className="text-brown-500">You have not entered any partners yet. <br />
             <Link className="underline" to="../new-partner">Click here to add the first one.</Link></p>
         }
       </fieldset>
@@ -41,7 +41,6 @@ const InvoiceForm = ({
           onChange={(e) => setInvoiceDate(e.target.value)}
         />
       </fieldset>
-
 
       <fieldset className='mt-3'>
         <label htmlFor="DueDate">Due Date</label>
@@ -67,7 +66,9 @@ const InvoiceForm = ({
           <option value="false">Not Paid</option>
         </select>
       </fieldset>
-      <button onClick={handInvoiceID} className='mt-7 px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600' type="submit">Save</button>
+      
+      {/* Updated button with black text */}
+      <button onClick={handInvoiceID} className='mt-7 px-5 py-3 border font-montserrat text-sm leading-none bg-blue-500 rounded-xl text-black hover:bg-blue-700' type="submit">Save</button>
     </form>
   )
 }
