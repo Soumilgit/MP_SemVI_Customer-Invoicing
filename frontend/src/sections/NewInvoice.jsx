@@ -1,15 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom"
-import axios, { all } from 'axios';
+import axios from 'axios';
 import InvoiceItems from '../components/InvoiceItems';
 import InvoiceItemsForm from '../components/InvoiceItemsForm';
 import InvoiceForm from '../components/InvoiceForm';
 import { Helmet } from 'react-helmet';
 import DataContext from '../context/DataContext';
 
-
-const NewInvoice = (
-) => {
+const NewInvoice = () => {
 
   const { handleInvoiceSubmit, invoiceID, setInvoiceID, invoicePartnerid, setInvoicePartnerid, invoiceDate, setInvoiceDate, invoiceDueDate, setInvoiceDueDate, invoiceStatus, setInvoiceStatus, partners, invoiceItems, setInvoiceItems } = useContext(DataContext);
 
@@ -20,7 +18,6 @@ const NewInvoice = (
   const [itemRate, setItemRate] = useState('');
   const [generateInvoiceID, setGenerateInvoiceID] = useState(null);
 
-  // Generate Invoice ID
   useEffect(() => {
     setGenerateInvoiceID(Math.floor(Math.random() * 999999) + 1);
   }, []);
@@ -29,8 +26,6 @@ const NewInvoice = (
     setInvoiceID(generateInvoiceID);
   };
 
-
-  // Adding new item
   const handleInvoiceItemSubmit = async (e) => {
     e.preventDefault();
 
@@ -47,7 +42,6 @@ const NewInvoice = (
       const response = await axios.post(`${apiUrl}items`, createInoviceItem)
       const AllInvoiceItems = [...invoiceItems, response.data];
       setInvoiceItems(AllInvoiceItems)
-      // Clear
       setItemDesc('');
       setItemQty('');
       setItemRate('');
@@ -56,7 +50,6 @@ const NewInvoice = (
     }
   }
 
-  // Delete Invoice item
   const handleInvoiceItemDelete = async (id) => {
     try {
       await axios.delete(`${apiUrl}items/${id}`)
@@ -68,11 +61,11 @@ const NewInvoice = (
   }
 
   return (
-    <section className="w-full rounded-[20px] shadow-3xl px-8 py-4 mt-5">
+    <section className="w-full rounded-[20px] shadow-3xl px-8 py-4 mt-5 bg-gray-100">
       <Helmet>
         <title>New Invoices - Invoicely</title>
       </Helmet>
-      <h1 className="text-2xl font-bold mb-4">New Invoice</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-800">New Invoice</h1>
 
       <div className='flex flex-col md:flex-row gap-10'>
 
@@ -93,7 +86,7 @@ const NewInvoice = (
         </div>
 
         <div className='w-full md:w-2/3'>
-          <h2 className="text-xl text-coral-red font-semibold">Invoice items</h2>
+          <h2 className="text-xl text-teal-500 font-semibold">Invoice items</h2>
 
           <InvoiceItemsForm
             handleInvoiceItemSubmit={handleInvoiceItemSubmit}
@@ -117,4 +110,4 @@ const NewInvoice = (
   )
 }
 
-export default NewInvoice
+export default NewInvoice;
