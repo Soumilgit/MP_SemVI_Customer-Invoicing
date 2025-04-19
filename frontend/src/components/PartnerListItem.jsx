@@ -1,7 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
-const PartnerListItem = ({ partnerid, name, address, city, zip, country, handleDeletePartner }) => {
+const PartnerListItem = ({
+  partnerid,
+  name,
+  address,
+  city,
+  zip,
+  country,
+  handleDeletePartner,
+  handleEditPartner
+}) => {
 
   const [isDeleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
@@ -25,9 +33,19 @@ const PartnerListItem = ({ partnerid, name, address, city, zip, country, handleD
         <div className="sm:w-[400px] flex-1">{address}, {city}, {zip}, {country}</div>
 
         <div className="sm:w-[150px]">
-          <Link className="bg-green-500 py-1 px-3 rounded-md leading-normal text-white hover:bg-green-800 mr-4" to={`/edit-partner/${partnerid}`}>edit</Link>
+          <button
+            onClick={handleEditPartner}
+            className="bg-indigo-500 py-1 px-3 rounded-md leading-normal text-white"
+          >
+            Edit
+          </button>
 
-          <Link onClick={() => handleDeleteClick()} className="bg-red-500 py-1 px-3 rounded-md leading-normal text-white hover:bg-red-800">delete</Link>
+          <button
+            onClick={handleDeleteClick}
+            className="bg-red-500 py-1 px-3 rounded-md leading-normal text-white ml-2"
+          >
+            Delete
+          </button>
         </div>
       </div>
 
@@ -53,7 +71,7 @@ const PartnerListItem = ({ partnerid, name, address, city, zip, country, handleD
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default PartnerListItem
+export default PartnerListItem;
