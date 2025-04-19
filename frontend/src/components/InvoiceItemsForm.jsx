@@ -34,7 +34,7 @@ const InvoiceItemsForm = ({
         />
       </div>
 
-      <button className='flex flex-row mt-3 px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600' type="submit"><CaretDownOutlined className='mr-2' /> Add new item<CaretDownOutlined className='ml-2' /></button>
+      <button className='flex flex-row mt-3 px-5 py-3 border font-montserrat text-sm leading-none bg-indigo-400 rounded-xl text-white hover:bg-slate-600' type="submit"><CaretDownOutlined className='mr-2' /> Add new item<CaretDownOutlined className='ml-2' /></button>
     </form>
   )
 }
