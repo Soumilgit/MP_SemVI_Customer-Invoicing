@@ -63,60 +63,70 @@ const Home = () => {
     labels: labels,
     datasets: [
       {
-        label: "Invoice stats",
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgb(255, 99, 132)",
+        label: "Invoice Stats",
+        backgroundColor: "rgba(6, 182, 212, 0.2)", // Light Cyan background
+        borderColor: "rgba(6, 182, 212, 1)", // Cyan line color
+        borderWidth: 2,
+        pointBackgroundColor: "rgba(6, 182, 212, 1)", // Cyan points
+        pointBorderColor: "#fff",
+        pointBorderWidth: 2,
         data: lastFiveMonths.map(({ month, year }) => countInvoicesByMonthYear(month + 1, year)),
       },
     ],
   };
-
+  
   return (
-
-    <section className="w-full rounded-[20px] shadow-3xl px-8 py-4 mt-5">
+    <section className="w-full rounded-2xl bg-slate-50 shadow-md px-6 py-6 mt-5">
       <Helmet>
         <title>Stats - Invoicely</title>
       </Helmet>
-      <h1 className="text-2xl font-bold mb-4">Stats</h1>
-
-
-      <div className='flex gap-5'>
-
-        <div className='w-full md:w-1/3 bg-gray-600 rounded-md px-4 py-3'>
-          <div className='flex'><FundOutlined className='mt-1 mr-1 leading-3 text-white' /><h2 className='text-white text-l'> Total invoices</h2></div>
-          <p className='text-white text-3xl font-bold leading-9'>{totalInvoices}</p>
+  
+      <h1 className="text-3xl font-bold text-slate-800 mb-6">Dashboard Overview</h1>
+  
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-indigo-600 rounded-2xl p-6 shadow hover:shadow-lg transition">
+          <div className="flex items-center gap-2 mb-2">
+            <FundOutlined className="text-white text-xl" />
+            <h2 className="text-white text-lg font-semibold">Total Invoices</h2>
+          </div>
+          <p className="text-white text-4xl font-bold">{totalInvoices}</p>
         </div>
-
-        <div className='w-full md:w-1/3 bg-green-600 rounded-md px-4 py-3'>
-          <div className='flex'><FundOutlined className='mt-1 mr-1 leading-3 text-white' /><h2 className='text-white text-l'> Paid invoices</h2></div>
-          <p className='text-white text-3xl font-bold leading-9'>{paidInvoices}</p>
+  
+        <div className="bg-cyan-600 rounded-2xl p-6 shadow hover:shadow-lg transition">
+          <div className="flex items-center gap-2 mb-2">
+            <FundOutlined className="text-white text-xl" />
+            <h2 className="text-white text-lg font-semibold">Paid Invoices</h2>
+          </div>
+          <p className="text-white text-4xl font-bold">{paidInvoices}</p>
         </div>
-
-        <div className='w-full md:w-1/3 bg-red-600 rounded-md px-4 py-3'>
-          <div className='flex'><FundOutlined className='mt-1 mr-1 leading-3 text-white' /><h2 className='text-white text-l'> Unpaid invoices</h2></div>
-          <p className='text-white text-3xl font-bold leading-9'>{unpaidInvoices}</p>
+  
+        <div className="bg-violet-600 rounded-2xl p-6 shadow hover:shadow-lg transition">
+          <div className="flex items-center gap-2 mb-2">
+            <FundOutlined className="text-white text-xl" />
+            <h2 className="text-white text-lg font-semibold">Unpaid Invoices</h2>
+          </div>
+          <p className="text-white text-4xl font-bold">{unpaidInvoices}</p>
         </div>
-
       </div>
-
-
-
-      <div className='flex flex-col md:flex-row gap-5 md:h-80 mt-7'>
-
-        <div className='w-full md:w-2/3'>
+  
+      <div className="flex flex-col md:flex-row gap-6 mt-10">
+        <div className="w-full md:w-2/3 bg-white border border-slate-200 rounded-2xl p-5 shadow">
+          <h3 className="text-xl font-semibold text-slate-700 mb-4">Invoice Trend (Last 5 Months)</h3>
           <Line data={data} />
         </div>
-
-        <div className='w-full md:w-1/3 '>
+  
+        <div className="w-full md:w-1/3 bg-white border border-slate-200 rounded-2xl p-5 shadow">
+          <h3 className="text-xl font-semibold text-slate-700 mb-4">Monthly Breakdown</h3>
           <ul>
             {lastFiveMonths.map(({ month, year }) => {
               const numberOfMatchingInvoices = countInvoicesByMonthYear(month + 1, year);
               return (
-                <li key={`${year}-${month}`} className='mt-2 px-3 flex justify-between py-3 border-b-2 border-dotted bg-gray-100'>
-                  <div className='flex'>
-                    {`${getMonthName(month)} - ${year}`}
-                  </div>
-                  <div>{numberOfMatchingInvoices}</div>
+                <li
+                  key={`${year}-${month}`}
+                  className="flex justify-between items-center py-3 px-3 mb-2 rounded-md bg-teal-100 hover:bg-teal-200 transition"
+                >
+                  <span className="text-slate-800 font-medium">{`${getMonthName(month)} - ${year}`}</span>
+                  <span className="text-slate-900 font-bold">{numberOfMatchingInvoices}</span>
                 </li>
               );
             })}
@@ -124,7 +134,8 @@ const Home = () => {
         </div>
       </div>
     </section>
-  )
-}
-
+  );
+  
+}  
+  
 export default Home
