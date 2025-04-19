@@ -9,24 +9,28 @@ const Partners = () => {
   const { partners, handleDeletePartner } = useContext(DataContext);
 
   return (
-    <section className="w-full rounded-[20px] shadow-3xl px-8 py-4 mt-5">
-
+    <section className="w-full rounded-2xl shadow-md bg-white px-8 py-6 mt-5">
+      
       <Helmet>
         <title>Partners - Invoicely</title>
       </Helmet>
 
-      <h1 className="text-2xl font-bold mb-4">Partners</h1>
+      <h1 className="text-3xl font-bold text-indigo-600 mb-6">Partners</h1>
 
-      <p className='pb-6 pt-3'>Total partners: {partners.length}</p>
+      <p className='text-lg text-gray-700 pb-6 pt-3'>Total partners: {partners.length}</p>
 
-      <Link to="../new-partner" className='px-5 py-3 border font-montserrat text-sm leading-none bg-coral-red rounded-xl text-white hover:bg-slate-600'>New partner</Link>
+      <Link to="../new-partner" className='px-5 py-3 bg-teal-600 text-white text-sm font-montserrat rounded-xl hover:bg-teal-700 transition-colors'>
+        New Partner
+      </Link>
 
-      {partners.length ? (<PartnersList partners={partners} handleDeletePartner={handleDeletePartner} />)
-        :
-        (<p className='text-center mt-12 mb-4 text-gray-500'>No partners to display</p>)}
+      {partners.length ? (
+        <PartnersList partners={partners} handleDeletePartner={handleDeletePartner} />
+      ) : (
+        <p className='text-center mt-12 mb-4 text-gray-500'>No partners to display</p>
+      )}
 
     </section>
   )
 }
 
-export default Partners
+export default Partners;
